@@ -1,0 +1,17 @@
+﻿{
+	"Name": "BTAdditionalDificultyOptions",
+	"Enabled": true,
+
+	"Description": "Allows additional difficulty options by changing simgame company tags or calling a custom delegate.",
+	"Author": "mcb",
+	"Website": "https://github.com/mcb5637/BTAdditionalDificultyOptions",
+	"Version": "0.1.0",
+
+	"OptionallyDependsOn": [ ],
+
+	"DLL": "BTAdditionalDificultyOptions.dll",
+
+	"Settings": {
+
+	}
+}
