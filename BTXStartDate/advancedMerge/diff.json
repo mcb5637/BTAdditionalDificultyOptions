@@ -1,0 +1,141 @@
+{
+  "TargetIDs": [ "CareerDifficultySettings", "DifficultySettings" ],
+  "Instructions": [
+    {
+      "JSONPath": "$.difficultyList",
+      "Action": "ArrayConcat",
+      "Value": [
+        {
+          "ID": "diff_startdate",
+          "Name": "Starting Date",
+          "UIOrder": 0,
+          "TelemetryEventName": "",
+          "Tooltip": "Select your start date from:\n3025: Vanilla Start Year\n3039: War of 3039\n3049: Clan Invasion\n3053: Post Battle of Tukayyid",
+          "Enabled": true,
+          "Visible": true,
+          "Toggle": false,
+          "StartOnly": true,
+          "DefaultIndex": 0,
+          "Options": [
+            {
+              "ID": "diff_startdate3025",
+              "Name": "3025",
+              "TelemetryEventDesc": "",
+              "DifficultyValue": 0,
+              "CareerScoreModifier": 0,
+              "DifficultyConstants": [
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "AddSimGameTag",
+                  "ConstantValue": "start_timeline_3025"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3039"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3049_08"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3053"
+                }
+              ]
+            },
+            {
+              "ID": "diff_startdate3039",
+              "Name": "3039",
+              "TelemetryEventDesc": "",
+              "DifficultyValue": 0,
+              "CareerScoreModifier": 0,
+              "DifficultyConstants": [
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3025"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "AddSimGameTag",
+                  "ConstantValue": "start_timeline_3039"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3049_08"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3053"
+                }
+              ]
+            },
+            {
+              "ID": "diff_startdate3049",
+              "Name": "3049",
+              "TelemetryEventDesc": "",
+              "DifficultyValue": 0,
+              "CareerScoreModifier": 0,
+              "DifficultyConstants": [
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3025"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3039"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "AddSimGameTag",
+                  "ConstantValue": "start_timeline_3049_08"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3053"
+                }
+              ]
+            },
+            {
+              "ID": "diff_startdate3053",
+              "Name": "3053",
+              "TelemetryEventDesc": "",
+              "DifficultyValue": 0,
+              "CareerScoreModifier": 0,
+              "DifficultyConstants": [
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3025"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3039"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "RemoveSimGameTag",
+                  "ConstantValue": "start_timeline_3049_08"
+                },
+                {
+                  "ConstantType": "AdditionalSettings",
+                  "ConstantName": "AddSimGameTag",
+                  "ConstantValue": "start_timeline_3053"
+                }
+              ]
+            },
+          ]
+        }
+      ]
+    }
+  ]
+}

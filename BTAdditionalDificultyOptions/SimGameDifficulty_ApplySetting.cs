@@ -11,25 +11,47 @@ namespace BTAdditionalDificultyOptions
     [HarmonyPatch(typeof(SimGameDifficulty), "ApplySetting")]
     class SimGameDifficulty_ApplySetting
     {
-        public static void Prefix(SimGameDifficulty __instance, SimGameState ___simState, SimGameDifficulty.DifficultySetting setting, int index, ref List<SimGameDifficulty.DifficultyConstantValue> __state)
+        public static void Prefix(SimGameDifficulty __instance, bool force, SimGameState ___simState, SimGameDifficulty.DifficultySetting setting, int index,
+            Dictionary<string, int> ___difficultyIndices,
+            ref List<SimGameDifficulty.DifficultyConstantValue> __state)
         {
             __state = null;
             if (setting == null)
 			{
 				return;
-			}
-            SimGameDifficulty.DifficultyOption opt = setting.Options[index];
-            if (opt.DifficultyConstants != null)
+            }
+            if (!force && ___difficultyIndices[setting.ID] == index)
             {
-                __state = opt.DifficultyConstants;
-                foreach (SimGameDifficulty.DifficultyConstantValue v in opt.DifficultyConstants)
+                return;
+            }
+            if (index >= setting.Options.Count)
+            {
+                return;
+            }
+            if (!setting.Enabled)
+            {
+                return;
+            }
+            try
+            {
+                SimGameDifficulty.DifficultyOption opt = setting.Options[index];
+                if (opt.DifficultyConstants != null)
                 {
-                    if (v.ConstantType.Equals("AdditionalSettings"))
+                    __state = opt.DifficultyConstants;
+                    foreach (SimGameDifficulty.DifficultyConstantValue v in opt.DifficultyConstants)
                     {
-                        DifficultyOptionsMain.ApplySettings(___simState, setting.ID, v.ConstantName, v.ConstantValue);
+                        if (v.ConstantType.Equals("AdditionalSettings"))
+                        {
+                            DifficultyOptionsMain.ApplySettings(___simState, setting.ID, v.ConstantName, v.ConstantValue);
+                        }
                     }
+                    opt.DifficultyConstants = opt.DifficultyConstants.Where((x) => !x.ConstantType.Equals("AdditionalSettings")).ToList();
                 }
-                opt.DifficultyConstants = opt.DifficultyConstants.Where((x) => !x.ConstantType.Equals("AdditionalSettings")).ToList();
+            }
+            catch (Exception e)
+            {
+
+                FileLog.Log(e.ToString());
             }
         }
 

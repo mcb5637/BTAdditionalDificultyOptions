@@ -58,4 +58,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "C:\goggames\BATTLETECH\Mods\BTAdditionalDificultyOptions\$(TargetName).dll</PostBuildEvent>
+  </PropertyGroup>
 </Project>

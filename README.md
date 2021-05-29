@@ -15,4 +15,5 @@ Add delegate to handle custom options:
 - Add my dll as requirement in your dll
 - Add my mod as dependency in your mod.json
 - Write your delegate, it should be of type `Action<SimGameState, string, string, string>`, Parameters are `(SimGameState s, string ID, string ConstantName, string ConstantValue)`
+- Make sure you do handle the case where s is null (new game screen)
 - Add your delegate `BTAdditionalDificultyOptions.DifficultyOptionsMain.ApplySettings += YourFunc`

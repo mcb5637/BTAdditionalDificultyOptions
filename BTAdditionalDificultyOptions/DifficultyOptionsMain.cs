@@ -24,7 +24,8 @@ namespace BTAdditionalDificultyOptions
 
         private static void ApplyTags(SimGameState s, string id, string key, string val)
         {
-            //FileLog.Log(key + " " + val);
+            if (s == null)
+                return;
             if (key.Equals("AddSimGameTag") && !s.CompanyTags.Contains(val))
                 s.CompanyTags.Add(val);
             if (key.Equals("RemoveSimGameTag") && s.CompanyTags.Contains(val))
