@@ -40,17 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>C:\goggames\BATTLETECH\BattleTech_Data\Managed\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\goggames\BATTLETECH\BattleTech_Data\Managed\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\goggames\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\goggames\BATTLETECH\BattleTech_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DifficultyOptionsMain.cs" />
     <Compile Include="SimGameDifficulty_ApplySetting.cs" />
+    <Compile Include="SimGameState_ApplyEventAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mod.json">
@@ -59,6 +60,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "C:\goggames\BATTLETECH\Mods\BTAdditionalDificultyOptions\$(TargetName).dll</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "D:\goggames\BATTLETECH\mods\BTAdditionalDificultyOptions\$(TargetName).dll</PostBuildEvent>
   </PropertyGroup>
 </Project>

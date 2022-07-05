@@ -11,13 +11,15 @@ using Harmony;
 
 namespace BTAdditionalDificultyOptions
 {
-    class DifficultyOptionsMain
+    public class DifficultyOptionsMain
     {
         public static Action<SimGameState, string, string, string> ApplySettings;
+        public static Action<SimGameState, string, string[]> ApplyEventResult;
 
         public static void Init(string directory, string settingsJSON)
         {
             ApplySettings += ApplyTags;
+            ApplyEventResult += RemoveMechs;
             HarmonyInstance harmony = HarmonyInstance.Create("com.github.mcb5637.BTAdditionalDificultyOptions");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
@@ -30,6 +32,30 @@ namespace BTAdditionalDificultyOptions
                 s.CompanyTags.Add(val);
             if (key.Equals("RemoveSimGameTag") && s.CompanyTags.Contains(val))
                 s.CompanyTags.Remove(val);
+        }
+
+        private static void RemoveMechs(SimGameState s, string constant, string[] additionals)
+        {
+            if (constant.Equals("RemoveMech"))
+            {
+                List<int> toremove = new List<int>();
+                foreach (string cid in additionals)
+                {
+                    foreach (KeyValuePair<int, MechDef> kv in s.ActiveMechs)
+                    {
+                        if (kv.Value.Chassis.Description.Id.Equals(cid))
+                        {
+                            toremove.Add(kv.Key);
+                        }
+                    }
+                    if (s.GetItemCount(cid, typeof(MechDef), SimGameState.ItemCountType.UNDAMAGED_ONLY) > 0)
+                    {
+                        s.RemoveItemStat(cid, typeof(MechDef), false);
+                    }
+                }
+                foreach (int k in toremove)
+                    s.ActiveMechs.Remove(k);
+            }
         }
     }
 }
